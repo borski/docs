@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shoulder Recovery — Printable Cheat Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf6ec;
+    --surface: #fff;
+    --surface-2: #f0e9d6;
+    --border: #c9bda3;
+    --border-soft: #ddd0b3;
+    --text: #1a1814;
+    --text-dim: #6b6354;
+    --accent: #8a3820;
+    --accent-soft: #c8932a;
+    --red: #8a2020;
+    --red-dim: #fdf2f2;
+    --green: #4a5d3a;
+    --green-dim: #f0f4ee;
+    --orange: #b8650a;
+    --orange-dim: #fbf1e0;
+    --display: 'Bricolage Grotesque', system-ui, sans-serif;
+    --serif: 'Literata', Georgia, serif;
+  }
+
+  /* SCREEN view: shows what print will look like, on a tinted background */
+  @media screen {
+    body {
+      background: #ddd;
+      padding: 24px 0;
+    }
+    .sheet {
+      background: var(--bg);
+      width: 8.5in;
+      margin: 0 auto 24px;
+      padding: 0.45in 0.5in;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+      min-height: 11in;
+    }
+  }
+
+  /* PRINT — bulletproof against browser defaults */
+  @media print {
+    @page {
+      size: letter;
+      margin: 0.4in 0.45in;
+    }
+
+    /* Force ALL colored backgrounds to print, even if user has "background graphics" off */
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    body { background: #fff !important; padding: 0; margin: 0; }
+    .sheet { padding: 0; margin: 0; box-shadow: none; min-height: 0; }
+    .print-btn, .back-link { display: none !important; }
+    .pagebreak { page-break-before: always; }
+
+    /* Defensive: if backgrounds DON'T print, the dark cards still need to be readable */
+    .card.dark, .rules-banner, .check-week-head {
+      border: 1.5pt solid var(--text) !important;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--serif);
+    color: var(--text);
+    font-size: 9.5pt;
+    line-height: 1.4;
+    font-feature-settings: "kern", "liga", "onum";
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    border-bottom: 1.5pt solid var(--text);
+    padding-bottom: 8pt;
+    margin-bottom: 10pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24pt;
+  }
+
+  .eyebrow {
+    font-family: var(--display);
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3pt;
+  }
+  .eyebrow::before { content: "✦"; margin-right: 6pt; color: var(--accent-soft); }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 22pt;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  h1 em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-style: italic;
+    font-size: 9.5pt;
+    color: var(--text-dim);
+    margin-top: 3pt;
+    max-width: 4.5in;
+  }
+
+  .meta {
+    font-family: var(--display);
+    font-size: 8pt;
+    color: var(--text-dim);
+    line-height: 1.5;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .meta strong { color: var(--text); font-size: 8.5pt; }
+
+  /* ===== TWO COLUMN ===== */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14pt;
+    align-items: start;
+  }
+  .two-col > * { min-width: 0; }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    margin-bottom: 8pt;
+    break-inside: avoid;
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 12pt;
+    color: var(--text);
+    border-bottom: 1pt solid var(--text);
+    padding-bottom: 2pt;
+    margin-bottom: 5pt;
+    letter-spacing: -0.015em;
+  }
+  h2 em {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9.5pt;
+    color: var(--accent);
+    margin-bottom: 3pt;
+    margin-top: 6pt;
+    letter-spacing: -0.005em;
+  }
+  h3:first-child { margin-top: 0; }
+
+  p { margin-bottom: 4pt; font-size: 9pt; }
+
+  ul, ol { padding-left: 14pt; margin-bottom: 4pt; }
+  li { font-size: 9pt; line-height: 1.35; margin-bottom: 1.5pt; }
+  li strong { font-weight: 600; }
+
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+
+  /* ===== CARDS (small, full borders, no side stripes) ===== */
+  .card {
+    background: var(--surface);
+    border: 0.75pt solid var(--border);
+    border-radius: 3pt;
+    padding: 5pt 8pt;
+    margin: 4pt 0;
+    font-size: 8.75pt;
+    line-height: 1.35;
+    break-inside: avoid;
+  }
+
+  .card.alarm {
+    background: var(--red-dim);
+    border-color: var(--red);
+    border-width: 1pt;
+  }
+  .card.alarm h3 { color: var(--red); margin-top: 0; }
+
+  .card.calm {
+    background: var(--green-dim);
+    border-color: var(--green);
+    border-width: 1pt;
+  }
+  .card.calm h3 { color: #2d3a23; margin-top: 0; }
+
+  .card.dark {
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .card.dark h3 { color: var(--accent-soft); margin-top: 0; }
+  .card.dark strong { color: var(--bg); }
+
+  /* ===== TABLES (dense info-packing) ===== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 8.5pt;
+    margin-bottom: 4pt;
+  }
+  th {
+    font-family: var(--display);
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    text-align: left;
+    padding: 2pt 5pt;
+    border-bottom: 1pt solid var(--text);
+  }
+  td {
+    padding: 2.5pt 5pt;
+    border-bottom: 0.5pt solid var(--border-soft);
+    vertical-align: top;
+    line-height: 1.3;
+  }
+  tr:last-child td { border-bottom: none; }
+
+  /* ===== TAGS ===== */
+  .tag {
+    display: inline-block;
+    font-family: var(--display);
+    font-size: 6.5pt;
+    font-weight: 700;
+    padding: 1pt 4pt;
+    border-radius: 2pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .tag-strong { background: var(--red); color: #fff; }
+  .tag-mild { background: var(--green); color: #fff; }
+  .tag-key { background: var(--accent); color: #fff; }
+
+  /* ===== ROUTINE GRID ===== */
+  .routine {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5pt;
+  }
+  .routine-block {
+    background: var(--surface);
+    border: 0.75pt solid var(--border);
+    border-radius: 3pt;
+    padding: 5pt 7pt;
+  }
+  .routine-time {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 8.5pt;
+    color: var(--accent);
+    margin-bottom: 2pt;
+  }
+  .routine-block ul { padding-left: 11pt; margin: 0; }
+  .routine-block li { font-size: 8pt; margin-bottom: 1pt; }
+
+  /* ===== KEY RULES BANNER ===== */
+  .rules-banner {
+    background: var(--text);
+    color: var(--bg);
+    padding: 7pt 12pt;
+    margin: 6pt 0 8pt;
+    border-radius: 3pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .rules-banner h3 {
+    color: var(--accent-soft);
+    margin: 0 0 3pt;
+    font-size: 9.5pt;
+  }
+  .rules-banner ol {
+    margin: 0;
+    padding-left: 16pt;
+    column-count: 2;
+    column-gap: 14pt;
+    font-size: 8.75pt;
+  }
+  .rules-banner li {
+    color: var(--bg);
+    margin-bottom: 2pt;
+    break-inside: avoid;
+    font-size: 8.75pt;
+  }
+  .rules-banner strong { color: var(--accent-soft); }
+
+  /* ===== CHECKLIST ===== */
+  .check-week {
+    margin-bottom: 6pt;
+    border: 0.5pt solid var(--border);
+    border-radius: 3pt;
+    overflow: hidden;
+    break-inside: avoid;
+  }
+  .check-week-head {
+    background: var(--text);
+    color: var(--bg);
+    padding: 3pt 8pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .check-week-head .label {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 8.5pt;
+    letter-spacing: -0.005em;
+  }
+  .check-week-head .label .week {
+    color: var(--accent-soft);
+    font-size: 7pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-right: 6pt;
+  }
+  .check-week-head .dates {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 7.5pt;
+    color: #b8a87a;
+  }
+  .check-week ul {
+    list-style: none;
+    padding: 2pt 0;
+    margin: 0;
+  }
+  .check-week li {
+    list-style: none;
+    padding: 3pt 8pt;
+    border-top: 0.25pt dashed var(--border);
+    display: flex;
+    gap: 6pt;
+    margin: 0;
+    font-size: 8.5pt;
+    line-height: 1.3;
+    break-inside: avoid;
+  }
+  .check-week li:first-child { border-top: none; }
+  .box {
+    width: 9pt;
+    height: 9pt;
+    border: 1pt solid var(--text);
+    border-radius: 1.5pt;
+    flex-shrink: 0;
+    margin-top: 1pt;
+    background: #fff;
+  }
+  .check-week .item-text { flex: 1; }
+  .check-week .item-text strong { display: block; font-size: 8.5pt; }
+  .check-week .item-text strong.key { color: var(--accent); }
+  .check-week .item-text span {
+    display: block;
+    color: var(--text-dim);
+    font-size: 7.75pt;
+    line-height: 1.25;
+  }
+
+  /* ===== APPOINTMENTS ===== */
+  .appts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5pt;
+  }
+  .appt {
+    border: 0.5pt solid var(--border);
+    border-radius: 3pt;
+    padding: 4pt 7pt;
+    display: grid;
+    grid-template-columns: 36pt 1fr;
+    gap: 8pt;
+    font-size: 8pt;
+    break-inside: avoid;
+  }
+  .appt-date {
+    text-align: center;
+    border-right: 0.5pt solid var(--border);
+    padding-right: 6pt;
+  }
+  .appt-mo {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 7pt;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .appt-day {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 16pt;
+    line-height: 1;
+    margin: 1pt 0;
+    letter-spacing: -0.03em;
+  }
+  .appt-time {
+    font-size: 6.5pt;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+  .appt-info strong {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9pt;
+    display: block;
+    margin-bottom: 1pt;
+  }
+  .appt-info p {
+    font-size: 7.75pt;
+    color: var(--text-dim);
+    margin: 0;
+    line-height: 1.3;
+  }
+  .appt-info p.note {
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 1pt;
+  }
+
+  /* ===== PHONES ===== */
+  .phones {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4pt;
+  }
+  .phone {
+    border: 0.75pt solid var(--border);
+    background: var(--surface);
+    padding: 4pt 6pt;
+    border-radius: 3pt;
+  }
+  .phone.urgent {
+    background: var(--red-dim);
+    border: 1pt solid var(--red);
+  }
+  .phone.urgent .phone-label,
+  .phone.urgent .phone-num { color: var(--red); }
+  .phone-label {
+    font-family: var(--display);
+    font-size: 6.75pt;
+    color: var(--text-dim);
+    line-height: 1.15;
+    margin-bottom: 1pt;
+  }
+  .phone-num {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 11pt;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  /* ===== STOP/KEEP MED LISTS ===== */
+  .stopkeep {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12pt;
+  }
+  .stopkeep ul { padding-left: 13pt; margin: 0; }
+  .stopkeep li { font-size: 8.5pt; margin-bottom: 1pt; line-height: 1.3; }
+  .stopkeep h4 {
+    font-family: var(--display);
+    font-size: 8.5pt;
+    margin-bottom: 2pt;
+  }
+
+  /* ===== DRUG GRID ===== */
+  .drug-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6pt;
+  }
+  .drug {
+    background: var(--surface);
+    border: 0.75pt solid var(--border);
+    border-radius: 3pt;
+    padding: 6pt 9pt;
+    break-inside: avoid;
+  }
+  .drug .drug-name {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 13pt;
+    line-height: 1;
+    margin: 2pt 0 1pt;
+  }
+  .drug .drug-brand {
+    font-style: italic;
+    font-size: 7.75pt;
+    color: var(--text-dim);
+    margin-bottom: 4pt;
+  }
+  .drug .drug-dose strong {
+    color: var(--accent);
+    display: block;
+    font-size: 9pt;
+    margin-bottom: 2pt;
+  }
+  .drug .drug-dose { font-size: 8.25pt; line-height: 1.3; }
+
+  /* ===== MISC ===== */
+  hr.divider {
+    border: none;
+    border-top: 0.5pt solid var(--border);
+    margin: 6pt 0;
+  }
+
+  .small-note {
+    font-size: 7.5pt;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-top: 3pt;
+  }
+
+  footer {
+    border-top: 0.5pt solid var(--border);
+    margin-top: 6pt;
+    padding-top: 4pt;
+    font-family: var(--display);
+    font-size: 7pt;
+    color: var(--text-dim);
+    text-align: center;
+  }
+
+  /* ===== FLOATING BUTTONS (screen only) ===== */
+  .print-btn {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    z-index: 100;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .print-btn:hover { background: var(--accent); }
+
+  .back-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    background: var(--bg);
+    color: var(--text);
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    z-index: 100;
+  }
+</style>
+</head>
+<body>
+
+<a href="recovery.html" class="back-link">← Web version</a>
+<a href="recovery.pdf" class="print-btn" download>⬇ Download PDF</a>
+
+<div class="sheet">
+
+<header>
+  <div>
+    <div class="eyebrow">A Family Recovery Guide · For Dad</div>
+    <h1>Shoulder Recovery <em>Plan</em></h1>
+    <p class="subtitle">A printed reference for taking care of him after surgery. Keep it on the fridge.</p>
+  </div>
+  <div class="meta">
+    <strong>Surgery:</strong> May 11, 2026<br>
+    <strong>Surgeon:</strong> Dr. Silver<br>
+    <strong>Hospital:</strong> NYU Langone Orthopedic
+  </div>
+</header>
+
+<!-- ============================== PAGE 1: OVERVIEW + DAILY ============================== -->
+
+<div class="two-col">
+  <div>
+    <div class="section">
+      <h2>What <em>happened</em></h2>
+      <p>Dad fell on March 3 and tore the tendons in his shoulder. These are called the <strong>rotator cuff</strong>. They are what let you lift your arm.</p>
+      <p>On <strong>May 11</strong>, Dr. Silver fixed the tear. Through small cuts in the shoulder, he sewed the torn tendons back to the bone. He used tiny anchors to hold them in place. He also added a patch on top, like a bandage on the inside, to make the repair stronger.</p>
+      <p>The surgery went well. No problems. Dad came home the same day.</p>
+    </div>
+  </div>
+  <div>
+    <div class="section">
+      <h3>What to expect</h3>
+      <ul>
+        <li>The shoulder needs <strong>4 to 6 weeks</strong> in the sling. No exceptions.</li>
+        <li>Then physical therapy starts and lasts months.</li>
+        <li><strong>Full recovery: 6 to 9 months.</strong> Be patient.</li>
+        <li>The biggest risk is moving the arm too soon. If the repair fails, he needs another surgery.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="rules-banner">
+  <h3>The 4 most important rules</h3>
+  <ol>
+    <li><strong>Sling stays on.</strong> Day and night. Even sleeping. Only off for showers.</li>
+    <li><strong>No lifting with that arm.</strong> Nothing heavier than a coffee cup.</li>
+    <li><strong>Pain meds with food.</strong> Always. Or he gets sick.</li>
+    <li><strong>Ice the shoulder.</strong> 15-20 min, many times a day for week 1.</li>
+  </ol>
+</div>
+
+<div class="section">
+  <h2>A normal day, <em>roughly</em></h2>
+  <div class="routine">
+    <div class="routine-block">
+      <div class="routine-time">Morning</div>
+      <ul>
+        <li>Help him out of bed slowly</li>
+        <li>Bathroom, breakfast</li>
+        <li>Morning meds (with food)</li>
+        <li>Pain meds if needed</li>
+        <li>Ice 15-20 min</li>
+        <li>Check fingers look pink</li>
+      </ul>
+    </div>
+    <div class="routine-block">
+      <div class="routine-time">Afternoon</div>
+      <ul>
+        <li>Lunch (then pain meds OK)</li>
+        <li>Short walk if up for it</li>
+        <li>Ice 15-20 min</li>
+        <li>Rest in recliner</li>
+        <li>Help with anything two-handed</li>
+      </ul>
+    </div>
+    <div class="routine-block">
+      <div class="routine-time">Evening</div>
+      <ul>
+        <li>Dinner with evening meds</li>
+        <li>Ice one more time</li>
+        <li>Pain meds if needed</li>
+        <li>Brush teeth, wash up</li>
+      </ul>
+    </div>
+    <div class="routine-block">
+      <div class="routine-time">Bedtime</div>
+      <ul>
+        <li><strong>Pain meds BEFORE sleep</strong></li>
+        <li>Sling stays ON</li>
+        <li>Pillows around the arm</li>
+        <li>Phone within reach</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="two-col">
+  <div>
+    <div class="section">
+      <h3>The sling: how to put it on</h3>
+      <ol>
+        <li>Sit him down. Arm in his lap or on a pillow.</li>
+        <li>Slip his elbow into the bend of the sling.</li>
+        <li>Reach the long strap up and over the OTHER shoulder.</li>
+        <li>Pull the Velcro through the front rings, stick it down.</li>
+        <li>Check: elbow at 90°, arm across belly, only wrist and hand showing.</li>
+      </ol>
+    </div>
+
+    <div class="section">
+      <h3>Ice / cooling sleeve</h3>
+      <ul>
+        <li><strong>15-20 min on, then off.</strong> 3-5 times a day in week 1.</li>
+        <li>If he has the cooling sleeve, follow its directions. Better than ice packs.</li>
+        <li>For ice packs, wrap in a thin towel. Never on bare skin.</li>
+        <li>Best times: morning, before bed, before pain meds.</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="section">
+      <h3>Showering</h3>
+      <ul>
+        <li><strong>First 5 days: no showers.</strong> Sponge baths only.</li>
+        <li><strong>Day 5 (May 16):</strong> Take dressing off, rinse cuts gently, cover with daily Band-Aids.</li>
+        <li><strong>After day 5:</strong> Sling off in shower. Arm hangs straight down at his side. You wash him. Sling back on right after.</li>
+        <li>No baths, pools, hot tubs until the doctor says OK.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Things he absolutely cannot do</h3>
+      <ul>
+        <li>Lift more than a coffee cup with that arm</li>
+        <li>Reach overhead</li>
+        <li>Sleep without the sling</li>
+        <li>Drive while taking oxycodone</li>
+        <li>Drink alcohol while on pain meds</li>
+        <li>Take Advil or aspirin without asking the doctor</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== PAGE 2: CHECKLIST ============================== -->
+
+
+<div class="section">
+  <h2>Week-by-week <em>checklist</em></h2>
+  <p style="font-size:8.5pt; color:var(--text-dim); margin-bottom:6pt;">Use a pen. The boxes are real. The web version of this guide also has these checkboxes and they save automatically in your browser.</p>
+</div>
+
+<div class="two-col">
+  <div>
+
+    <div class="check-week">
+      <div class="check-week-head">
+        <div class="label"><span class="week">Week 1</span>The hard week</div>
+        <div class="dates">May 11 – 17</div>
+      </div>
+      <ul>
+        <li><div class="box"></div><div class="item-text"><strong class="key">First night: pain meds BEFORE bed</strong><span>Numbing block wears off in the night. Don't wait for pain.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Pick up oxycodone &amp; Tylenol</strong><span>NYU pharmacy, 301 East 17th St. Mon–Fri, 9 AM – 10 PM.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Set pillows around his arm at night</strong><span>So he can't roll onto it. Recliner is even better for night 1-2.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Check fingers every 2 hours on day 1</strong><span>Should be pink. If pale, blue, or numb past 48hr → call doctor.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Ice many times a day</strong><span>15-20 min on, off. Use cooling sleeve if you have one.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Eat something before pain meds</strong><span>Even crackers. Empty stomach + pain pills = vomiting.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Keep dressing dry. NO showers for 5 days.</strong><span>Sponge baths only.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong class="key">Day 5 (May 16): take off the dressing</strong><span>Rinse cuts gently with soap &amp; water. Cover with Band-Aids.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Push fluids and fiber</strong><span>Pain pills cause constipation. Prune juice, water, Colace.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Help him with everything</strong><span>Lay out clothes. Cut up food. He can't use that arm.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="check-week">
+      <div class="check-week-head">
+        <div class="label"><span class="week">Week 2</span>First check-up</div>
+        <div class="dates">May 18 – 24</div>
+      </div>
+      <ul>
+        <li><div class="box"></div><div class="item-text"><strong class="key">May 19, 10:30 AM: Post-op visit</strong><span>Stitches come out. With Svetlana, PA. Bay Ridge. Arrive 15 min early.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Start cutting back oxycodone</strong><span>Try 1 pill instead of 2. Use Tylenol in between. Less every day.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Showers OK now</strong><span>Sling off in shower. Arm hangs straight down. You wash him.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Sling back on right after towel-off</strong><span>Don't let him "test" the arm.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Ice less often, but still daily</strong><span>A few times a day instead of all day.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Fresh Band-Aid on incisions daily</strong><span>Until doctor says they're healed.</span></div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div>
+    <div class="check-week">
+      <div class="check-week-head">
+        <div class="label"><span class="week">Weeks 3-4</span>Settling in</div>
+        <div class="dates">May 25 – Jun 7</div>
+      </div>
+      <ul>
+        <li><div class="box"></div><div class="item-text"><strong class="key">May 28, 11:15 AM: Dr. Dekhovich + scan</strong><span>West Brighton. Two appointments back-to-back.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong class="key">June 4: Cardiac cath with Dr. Kamran</strong><span>For his heart, not the shoulder. Confirm time with cardiology.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Try to be off oxycodone</strong><span>Just Tylenol now. Call doctor if pain is still bad.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>SLING STILL ON. All the time.</strong><span>This is when people start cheating. Don't let him.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Move his hand and wrist daily</strong><span>Open/close fist, wiggle fingers. Just hand and wrist, nothing higher.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Watch his mood</strong><span>By now he's bored, frustrated. Normal. Get him out for walks.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="check-week">
+      <div class="check-week-head">
+        <div class="label"><span class="week">Weeks 5-6</span>Sling comes off</div>
+        <div class="dates">Jun 8 – 21</div>
+      </div>
+      <ul>
+        <li><div class="box"></div><div class="item-text"><strong class="key">Schedule next visit with Dr. Silver</strong><span>If they didn't already give one. Office: 929-455-2000.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong class="key">Ask the doctor when to STOP the sling</strong><span>Don't take it off on your own. Wait for the surgeon to say so.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Get the PT referral</strong><span>Ask office for the script and a PT clinic near him.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Book first PT appointment</strong><span>2-3 times a week to start.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="check-week">
+      <div class="check-week-head">
+        <div class="label"><span class="week">Months 2-3</span>Physical therapy</div>
+        <div class="dates">Jul – Aug</div>
+      </div>
+      <ul>
+        <li><div class="box"></div><div class="item-text"><strong>PT 2-3x/week</strong><span>Therapist moves the arm at first, then teaches him exercises.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Home exercises EVERY DAY</strong><span>PT only works if he does them at home. Daily reminder.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong class="key">July 16, 11 AM: GI follow-up Dr. Su</strong><span>Stomach doctor. Manhattan. Not the shoulder.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Still no heavy lifting</strong><span>No suitcases, groceries, or grandkids on that arm.</span></div></li>
+      </ul>
+    </div>
+
+    <div class="check-week">
+      <div class="check-week-head">
+        <div class="label"><span class="week">Months 4-9</span>Back to normal</div>
+        <div class="dates">Sep onward</div>
+      </div>
+      <ul>
+        <li><div class="box"></div><div class="item-text"><strong>Strength training added to PT</strong><span>Slowly building muscles back up.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Most normal activities OK</strong><span>Driving, light cooking, dressing himself. Doctor will say when.</span></div></li>
+        <li><div class="box"></div><div class="item-text"><strong>Full recovery: 6-9 months out</strong><span>Heavy lifting and full strength take this long. Don't rush.</span></div></li>
+      </ul>
+    </div>
+
+    <!-- Filler card to balance column heights -->
+    <div class="card calm" style="margin-top: 8pt;">
+      <h3 style="margin-bottom: 3pt;">Reminder</h3>
+      <p style="margin: 0; font-size: 8.5pt;">If anything feels wrong and you can't reach Dr. Silver's office, call <strong>929-455-2000</strong>. Out of hours, take him to urgent care or the ER. Tell them: shoulder surgery on May 11 with Dr. Silver at NYU.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================== PAGE 3: MEDICATIONS + WARNINGS ============================== -->
+
+
+<div class="section">
+  <h2>All the <em>medications</em></h2>
+  <p style="font-size:8.5pt; color:var(--text-dim); margin-bottom:6pt;">Two new pain pills to start. Some old ones to stop. Everything else stays the same.</p>
+</div>
+
+<div class="drug-grid">
+  <div class="drug">
+    <span class="tag tag-strong">Strong · Use with care</span>
+    <div class="drug-name">Oxycodone</div>
+    <div class="drug-brand">also called Roxicodone · 5 mg pill</div>
+    <div class="drug-dose">
+      <strong>2 pills every 6 hours, only if needed</strong>
+      Drop down to 1 pill as pain gets better. Never more than 8 pills (40 mg) in one day. <strong>Always with food.</strong> Bottle has 30 pills.
+    </div>
+  </div>
+  <div class="drug">
+    <span class="tag tag-mild">Mild · Safer</span>
+    <div class="drug-name">Tylenol</div>
+    <div class="drug-brand">also called Acetaminophen · 500 mg pill</div>
+    <div class="drug-dose">
+      <strong>2 pills every 6 hours, only if needed</strong>
+      Use BETWEEN oxycodone doses for steady coverage. Bottle has 60 pills.
+    </div>
+  </div>
+</div>
+
+<div class="two-col" style="margin-top: 6pt;">
+  <div>
+    <div class="card dark">
+      <h3>The pain plan, simply</h3>
+      <p style="margin: 0 0 2pt;">Use BOTH together for the first few days. Layer them. Take Tylenol 3 hours after oxycodone. That way he always has something working.</p>
+      <p style="margin: 0 0 2pt;"><strong>Then taper.</strong> Drop oxycodone first, one pill at a time. Keep Tylenol if he still needs it.</p>
+      <p style="margin: 0;"><strong>Always with food.</strong> Even crackers. Empty stomach makes him throw up.</p>
+    </div>
+  </div>
+  <div>
+    <div class="card alarm">
+      <h3>The first night rule</h3>
+      <p style="margin: 0;">The numbing block from surgery wears off in the middle of the night. Take pain medication BEFORE bed on the first night. With food. Don't skip this. He'll thank you in the morning.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 8pt;">
+  <h3>Pills to STOP and KEEP</h3>
+  <div class="stopkeep">
+    <div>
+      <h4 style="color: var(--red);">STOP taking (paused for surgery)</h4>
+      <ul>
+        <li><strong>Aspirin 81 mg</strong> (Bayer)</li>
+        <li><strong>Voltaren 75 mg</strong> (diclofenac)</li>
+        <li><strong>Gralise 300 mg</strong> (gabapentin)</li>
+        <li><strong>Crestor 10 mg</strong> (rosuvastatin)</li>
+        <li><strong>Prilosec 40 mg</strong> (omeprazole)</li>
+        <li><strong>Flonase</strong> nasal spray</li>
+        <li><strong>Kenalog</strong> ointment</li>
+        <li><strong>Alpha Lipoic Acid, Vitamin B</strong></li>
+      </ul>
+      <p class="small-note">Aspirin and Voltaren make you bleed more. Ask Dr. Silver or Dr. Beker when he can restart these.</p>
+    </div>
+    <div>
+      <h4 style="color: var(--green);">KEEP taking as normal</h4>
+      <ul>
+        <li><strong>Metformin 500 mg</strong> — once daily with meals (diabetes)</li>
+        <li><strong>Hyzaar 100/12.5 mg</strong> (losartan-HCTZ) — once daily (BP)</li>
+        <li><strong>Toprol XL 25 mg</strong> (metoprolol) — once daily (heart/BP)</li>
+        <li><strong>Pletal 100 mg</strong> (cilostazol) — twice daily (circulation)</li>
+        <li><strong>Blood sugar checks</strong> — same as always</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card alarm" style="margin-top: 6pt;">
+  <h3>NEVER mix oxycodone with these</h3>
+  <ul style="margin: 2pt 0 0; padding-left: 14pt;">
+    <li><strong>Alcohol.</strong> Even one drink. It can stop his breathing.</li>
+    <li><strong>Sleeping pills</strong> (Ambien, etc.)</li>
+    <li><strong>Anti-anxiety pills</strong> (Xanax, Ativan, Klonopin)</li>
+    <li><strong>Other pain pills</strong> from any source</li>
+  </ul>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <h2>When to <em>worry</em></h2>
+</div>
+
+<div class="two-col">
+  <div class="card alarm">
+    <h3>Call 911 / Go to the ER NOW</h3>
+    <ul style="margin: 2pt 0 0; padding-left: 14pt;">
+      <li><strong>Chest pain</strong> or trouble breathing</li>
+      <li><strong>Fingers turn pale, blue, or purple</strong></li>
+      <li><strong>Arm stays totally numb after 48 hours</strong></li>
+      <li><strong>Heavy bleeding</strong> from the bandage</li>
+      <li><strong>Confused, very weak, or dizzy</strong></li>
+      <li><strong>Hasn't peed in 8+ hours</strong></li>
+      <li><strong>Can't wake him up</strong> or breathing is very slow</li>
+    </ul>
+  </div>
+
+  <div class="card alarm">
+    <h3>Call Dr. Silver: 929-455-2000</h3>
+    <ul style="margin: 2pt 0 0; padding-left: 14pt;">
+      <li><strong>Fever over 101°F</strong> (38.3°C)</li>
+      <li><strong>Chills</strong></li>
+      <li><strong>Cuts get red, hot, swollen, or have pus</strong></li>
+      <li><strong>Strange liquid</strong> from the cuts</li>
+      <li><strong>Pain that meds aren't helping at all</strong></li>
+      <li><strong>Throwing up that won't stop</strong></li>
+      <li><strong>Pain or swelling in his calf</strong> (could be a blood clot)</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 6pt;">
+  <h3>Things that look bad but are NORMAL</h3>
+  <ul style="column-count: 2; column-gap: 18pt;">
+    <li><strong>Bruising down the arm.</strong> Blood drains with gravity. Can spread to his hand. Goes away in 1-2 weeks.</li>
+    <li><strong>Some swelling.</strong> Ice helps.</li>
+    <li><strong>Tingling / pins &amp; needles</strong> as block wears off. This is the cue to take pain meds.</li>
+    <li><strong>Constipation.</strong> Normal from pain pills. Fluids, fiber, laxative if needed.</li>
+    <li><strong>Trouble sleeping.</strong> Recliner helps.</li>
+    <li><strong>Feeling down or grumpy</strong> after a few days. Surgery is hard on the spirit.</li>
+  </ul>
+  <p class="small-note">If you can't reach the office and you're worried, take him to urgent care or the ER. Tell them he had shoulder surgery on May 11 with Dr. Silver at NYU.</p>
+</div>
+
+<!-- ============================== PAGE 4: APPOINTMENTS + PHONES ============================== -->
+
+
+<div class="section">
+  <h2>Upcoming <em>appointments</em></h2>
+</div>
+
+<div class="appts">
+  <div class="appt">
+    <div class="appt-date">
+      <div class="appt-mo">May</div>
+      <div class="appt-day">19</div>
+      <div class="appt-time">10:30 AM</div>
+    </div>
+    <div class="appt-info">
+      <strong>Stitches come out</strong>
+      <p>With Svetlana, PA</p>
+      <p>NYU Bay Ridge · 6740 Fourth Ave, 4th Fl</p>
+      <p>📞 929-455-2000</p>
+      <p class="note">Arrive 15 min early.</p>
+    </div>
+  </div>
+
+  <div class="appt">
+    <div class="appt-date">
+      <div class="appt-mo">May</div>
+      <div class="appt-day">28</div>
+      <div class="appt-time">11:15 AM</div>
+    </div>
+    <div class="appt-info">
+      <strong>Follow-up + leg artery scan</strong>
+      <p>Dr. Dekhovich, then scan at 11:45 AM</p>
+      <p>NYU West Brighton · 2857 W 8th St, Ste 200</p>
+      <p>📞 929-455-3060</p>
+    </div>
+  </div>
+
+  <div class="appt">
+    <div class="appt-date">
+      <div class="appt-mo">Jun</div>
+      <div class="appt-day">04</div>
+      <div class="appt-time">scheduled</div>
+    </div>
+    <div class="appt-info">
+      <strong>Heart procedure (cardiac cath)</strong>
+      <p>With Dr. Kamran</p>
+      <p>For his heart, not the shoulder.</p>
+      <p>Confirm time with cardiology.</p>
+    </div>
+  </div>
+
+  <div class="appt">
+    <div class="appt-date">
+      <div class="appt-mo">Jun</div>
+      <div class="appt-day">29</div>
+      <div class="appt-time">11:15 AM</div>
+    </div>
+    <div class="appt-info">
+      <strong>Eye doctor (first visit)</strong>
+      <p>Dr. Golan</p>
+      <p>NYU Eye Center · 7901 4th Ave, Ste A4</p>
+      <p>📞 718-748-1334</p>
+    </div>
+  </div>
+
+  <div class="appt">
+    <div class="appt-date">
+      <div class="appt-mo">Jul</div>
+      <div class="appt-day">16</div>
+      <div class="appt-time">11:00 AM</div>
+    </div>
+    <div class="appt-info">
+      <strong>Stomach doctor</strong>
+      <p>Dr. Su</p>
+      <p>NYU Gastroenterology · 150 E 32nd St, Ste 101</p>
+      <p>📞 212-263-3643</p>
+    </div>
+  </div>
+</div>
+
+<p class="small-note">Dr. Silver's office will likely add more shoulder visits as he heals. Physical therapy starts around weeks 4-6.</p>
+
+<hr class="divider">
+
+<div class="section">
+  <h2>Phone <em>numbers</em></h2>
+</div>
+
+<div class="phones">
+  <div class="phone urgent">
+    <div class="phone-label">EMERGENCY</div>
+    <div class="phone-num">911</div>
+  </div>
+  <div class="phone urgent">
+    <div class="phone-label">Poison Control (med mistake)</div>
+    <div class="phone-num">800-222-1222</div>
+  </div>
+  <div class="phone">
+    <div class="phone-label">Dr. Silver's office</div>
+    <div class="phone-num">929-455-2000</div>
+  </div>
+  <div class="phone">
+    <div class="phone-label">NYU Orthopedic Hospital</div>
+    <div class="phone-num">888-453-3627</div>
+  </div>
+  <div class="phone">
+    <div class="phone-label">Anesthesia (block questions)</div>
+    <div class="phone-num">212-598-6085</div>
+  </div>
+  <div class="phone">
+    <div class="phone-label">Anesthesia after hours</div>
+    <div class="phone-num">212-263-7300</div>
+  </div>
+  <div class="phone">
+    <div class="phone-label">NYU Pharmacy (E 17th St)</div>
+    <div class="phone-num">212-598-6143</div>
+  </div>
+  <div class="phone">
+    <div class="phone-label">988 Crisis Line</div>
+    <div class="phone-num">988</div>
+  </div>
+</div>
+
+<div class="card" style="margin-top: 6pt;">
+  <h3 style="margin-top: 0;">When you call the doctor's office</h3>
+  <p style="margin: 0; font-size: 8.5pt;">Have these ready: <strong>full name</strong> · <strong>date of birth</strong> · <strong>MRN (medical record #)</strong> · <strong>surgery date: May 11, 2026</strong> · <strong>surgeon: Dr. Silver</strong>. The MRN is on every piece of paperwork from NYU.</p>
+</div>
+
+<footer>
+  Made from NYU Langone discharge papers, May 11, 2026 · A plain-English summary, not a replacement for the doctor.
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,1725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dad's Shoulder Recovery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink-soft: #4a4439;
+    --ink-faint: #7a7264;
+    --paper: #f5f0e6;
+    --paper-warm: #ede4d3;
+    --paper-deep: #e3d6bd;
+    --accent: #b04a2f;
+    --accent-deep: #8c3820;
+    --moss: #4a5d3a;
+    --gold: #c8932a;
+    --alarm: #a02828;
+    --alarm-soft: #f5dada;
+    --calm: #3a5a4a;
+    --calm-soft: #d8e5dc;
+    --rule: #c9bda3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Literata', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 18px;
+    font-feature-settings: "kern", "liga", "onum";
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(176,74,47,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(74,93,58,0.04) 0%, transparent 40%);
+    min-height: 100vh;
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 50px 40px 120px;
+  }
+
+  /* ===== HEADER ===== */
+  header.masthead {
+    border-bottom: 3px double var(--ink);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .eyebrow::before {
+    content: "✦";
+    margin-right: 10px;
+    color: var(--gold);
+  }
+
+  h1.title {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(44px, 7vw, 72px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    margin-bottom: 14px;
+    font-variation-settings: "wdth" 95;
+  }
+
+  h1.title em {
+    font-family: 'Literata', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent-deep);
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-family: 'Literata', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ink-soft);
+    max-width: 620px;
+    line-height: 1.4;
+  }
+
+  .meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 14px;
+    color: var(--ink-faint);
+  }
+
+  .meta-bar strong {
+    color: var(--ink);
+    font-weight: 600;
+    display: block;
+    font-size: 15px;
+    margin-top: 2px;
+  }
+
+  /* ===== TABS ===== */
+  .tabs {
+    margin-bottom: 36px;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 10;
+    padding-top: 12px;
+  }
+
+  .tab-btn {
+    background: transparent;
+    border: none;
+    padding: 14px 16px;
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    cursor: pointer;
+    border-bottom: 4px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    flex: 1;
+    text-align: center;
+  }
+
+  @media (max-width: 880px) {
+    .tab-btn { font-size: 13px; padding: 12px 10px; flex: 0 0 auto; }
+    .tab-num { display: none; }
+  }
+
+  .tab-btn:hover {
+    color: var(--ink);
+  }
+
+  .tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .tab-num {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-style: italic;
+    font-size: 13px;
+    margin-right: 6px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .tab-panel {
+    display: none;
+    animation: fade 0.3s ease;
+  }
+
+  .tab-panel.active {
+    display: block;
+  }
+
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== HEADINGS ===== */
+  h2.section-title {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(34px, 4.5vw, 48px);
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    margin-bottom: 14px;
+  }
+
+  h2.section-title em {
+    font-family: 'Literata', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent-deep);
+    letter-spacing: -0.015em;
+  }
+
+  .section-intro {
+    font-family: 'Literata', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+    max-width: 60ch;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  h3 {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin: 36px 0 14px;
+    letter-spacing: -0.005em;
+  }
+
+  h4 {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    margin: 18px 0 8px;
+  }
+
+  p {
+    margin-bottom: 14px;
+    max-width: 75ch;
+  }
+
+  strong { font-weight: 600; }
+  em { font-style: italic; }
+
+  ul, ol {
+    margin: 0 0 18px 24px;
+    max-width: 66ch;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    padding: 22px 26px;
+    margin: 20px 0;
+    border-radius: 3px;
+  }
+
+  .card.alarm {
+    background: var(--alarm-soft);
+    border: 1.5px solid var(--alarm);
+    position: relative;
+  }
+
+  .card.alarm::before {
+    content: "!";
+    position: absolute;
+    top: -16px;
+    left: 22px;
+    width: 32px;
+    height: 32px;
+    background: var(--alarm);
+    color: var(--paper);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .card.alarm h3, .card.alarm h4 { color: var(--alarm); margin-top: 4px; }
+
+  .card.calm {
+    background: var(--calm-soft);
+    border: 1.5px solid var(--calm);
+  }
+
+  .card.calm h3, .card.calm h4 { color: var(--calm); margin-top: 0; }
+
+  .card.dark {
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 28px 32px;
+  }
+
+  .card.dark h3 { color: var(--gold); margin-top: 0; }
+
+  /* ===== CHECKLIST ===== */
+  .week-block {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .week-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .week-label {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .week-title {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.1;
+  }
+
+  .week-dates {
+    font-size: 13px;
+    color: rgba(245, 240, 230, 0.7);
+    font-style: italic;
+  }
+
+  .check-list {
+    list-style: none;
+    margin: 0;
+    padding: 12px 0;
+  }
+
+  .check-list li {
+    list-style: none;
+    margin: 0;
+    padding: 14px 24px;
+    border-bottom: 1px dashed var(--rule);
+    display: flex;
+    gap: 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li:hover { background: rgba(0,0,0,0.03); }
+
+  .check-list input[type="checkbox"] {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--ink-soft);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+    background: var(--paper);
+    position: relative;
+    transition: all 0.15s;
+  }
+
+  .check-list input[type="checkbox"]:hover {
+    border-color: var(--accent);
+  }
+
+  .check-list input[type="checkbox"]:checked {
+    background: var(--moss);
+    border-color: var(--moss);
+  }
+
+  .check-list input[type="checkbox"]:checked::after {
+    content: "✓";
+    color: var(--paper);
+    font-size: 16px;
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .check-list label {
+    cursor: pointer;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .check-list input[type="checkbox"]:checked + label {
+    color: var(--ink-faint);
+    text-decoration: line-through;
+    text-decoration-color: var(--ink-faint);
+  }
+
+  .check-list label .lbl-main {
+    font-weight: 500;
+    display: block;
+  }
+
+  .check-list label .lbl-sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+    display: block;
+    margin-top: 2px;
+  }
+
+  .check-list .everyday {
+    background: var(--paper-deep);
+  }
+
+  .check-list .key-task .lbl-main {
+    color: var(--accent-deep);
+    font-weight: 600;
+  }
+
+  /* ===== DAILY ROUTINE ===== */
+  .routine {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .routine-block {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    padding: 18px 20px;
+    border-radius: 3px;
+  }
+
+  .routine-time {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .routine-block ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 15px;
+  }
+
+  .routine-block li {
+    margin-bottom: 4px;
+  }
+
+  /* ===== DRUG CARDS ===== */
+  .drug-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 20px 0;
+  }
+
+  @media (max-width: 640px) {
+    .drug-grid { grid-template-columns: 1fr; }
+  }
+
+  .drug {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    padding: 22px 24px;
+    border-radius: 3px;
+  }
+
+  .drug-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .drug-tag.strong { background: var(--alarm); color: var(--paper); }
+  .drug-tag.mild { background: var(--moss); color: var(--paper); }
+
+  .drug-name {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+
+  .drug-brand {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+
+  .drug-dose {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .drug-dose strong {
+    display: block;
+    color: var(--accent-deep);
+    margin-bottom: 6px;
+    font-size: 17px;
+  }
+
+  /* ===== APPOINTMENTS ===== */
+  .appt {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 22px;
+    padding: 18px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .appt:last-child { border-bottom: none; }
+
+  .appt-date {
+    text-align: center;
+    border-right: 1px solid var(--rule);
+    padding-right: 16px;
+  }
+
+  .appt-mo {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .appt-day {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1;
+    margin: 4px 0;
+  }
+
+  .appt-time {
+    font-size: 13px;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  .appt-info h4 {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin: 0 0 6px;
+  }
+
+  .appt-info p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 2px;
+  }
+
+  /* ===== PHONE NUMBERS ===== */
+  .phone-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .phone {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 16px 20px;
+    border-radius: 3px;
+  }
+
+  .phone.urgent {
+    background: var(--alarm-soft);
+    border: 1.5px solid var(--alarm);
+  }
+
+  .phone.urgent .phone-label { color: var(--alarm); font-weight: 600; }
+  .phone.urgent .phone-num { color: var(--alarm); }
+
+  .phone-label {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-bottom: 4px;
+  }
+
+  .phone-num {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    display: block;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  .phone-num:hover { color: var(--accent); }
+
+  /* ===== ORNAMENT ===== */
+  .ornament {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--rule);
+    font-size: 18px;
+    letter-spacing: 1em;
+  }
+
+  .pull {
+    font-family: 'Literata', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.35;
+    color: var(--accent-deep);
+    padding: 8px 0 8px 0;
+    margin: 32px 0;
+    max-width: 56ch;
+    position: relative;
+  }
+
+  .pull::before {
+    content: "\201C";
+    font-family: 'Literata', Georgia, serif;
+    position: absolute;
+    left: -0.55em;
+    top: -0.1em;
+    font-size: 1.6em;
+    color: var(--accent);
+    line-height: 1;
+    font-style: normal;
+  }
+
+  /* ===== PROGRESS ===== */
+  .progress-bar {
+    background: var(--paper-deep);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 12px 0 20px;
+    border: 1px solid var(--rule);
+  }
+
+  .progress-fill {
+    background: var(--moss);
+    height: 100%;
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  .progress-text {
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 3px double var(--ink);
+    font-size: 14px;
+    color: var(--ink-faint);
+    text-align: center;
+  }
+
+  footer p { margin: 0 auto 6px; }
+
+  /* ===== PRINT BUTTON ===== */
+  .print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(26, 24, 20, 0.18);
+    transition: transform 0.15s, background 0.15s;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .print-btn:hover {
+    background: var(--accent-deep);
+    transform: translateY(-2px);
+  }
+
+  .print-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ===== PRINT STYLES ===== */
+  @media print {
+    @page {
+      size: letter;
+      margin: 0.5in 0.5in 0.55in;
+      @bottom-center {
+        content: "Dad's Shoulder Recovery — page " counter(page);
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-size: 8pt;
+        color: #888;
+      }
+    }
+
+    html { font-size: 10pt; }
+
+    body {
+      background: #fff !important;
+      background-image: none !important;
+      color: #111;
+      font-size: 9.75pt;
+      line-height: 1.42;
+      font-family: 'Literata', Georgia, serif;
+    }
+
+    .wrap {
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .print-btn,
+    .tabs,
+    .progress-bar,
+    .progress-text,
+    .ornament,
+    nav.toc {
+      display: none !important;
+    }
+
+    /* Flow all panels naturally. NO forced page breaks. Let content fill. */
+    .tab-panel {
+      display: block !important;
+      animation: none;
+    }
+
+    /* Only force a new page before major section starts AFTER content has flowed */
+    #checklist,
+    #daily,
+    #meds,
+    #warnings,
+    #appts {
+      break-before: page;
+    }
+
+    /* Header — compact masthead */
+    header.masthead {
+      border-bottom: 1.5pt solid #111;
+      padding-bottom: 10pt;
+      margin-bottom: 14pt;
+    }
+
+    .eyebrow {
+      font-size: 8pt;
+      margin-bottom: 6pt;
+    }
+
+    h1.title {
+      font-size: 28pt !important;
+      line-height: 0.95 !important;
+      margin-bottom: 6pt;
+      letter-spacing: -0.03em;
+    }
+
+    h1.title em {
+      font-size: 0.92em;
+    }
+
+    .subtitle {
+      font-size: 11pt !important;
+      max-width: 100%;
+    }
+
+    .meta-bar {
+      display: flex;
+      gap: 0;
+      margin-top: 10pt;
+      padding-top: 8pt;
+      font-size: 8.5pt;
+      justify-content: space-between;
+    }
+
+    .meta-bar > div {
+      flex: 1;
+      padding-right: 8pt;
+    }
+
+    .meta-bar strong {
+      font-size: 9.5pt;
+    }
+
+    /* Section titles */
+    h2.section-title {
+      font-size: 19pt !important;
+      break-after: avoid;
+      margin-bottom: 4pt;
+      margin-top: 0;
+    }
+
+    .section-intro {
+      font-size: 10.5pt !important;
+      margin-bottom: 10pt;
+      padding-bottom: 8pt;
+      break-after: avoid;
+      max-width: 100%;
+    }
+
+    h3 {
+      font-size: 12pt !important;
+      break-after: avoid;
+      margin: 10pt 0 4pt;
+    }
+
+    h4 {
+      font-size: 10.5pt !important;
+      break-after: avoid;
+      margin: 6pt 0 2pt;
+    }
+
+    p {
+      max-width: 100%;
+      margin-bottom: 6pt;
+    }
+
+    ul, ol {
+      max-width: 100%;
+      margin: 0 0 8pt 18pt;
+    }
+
+    li {
+      orphans: 2;
+      widows: 2;
+      margin-bottom: 3pt;
+    }
+
+    p, li {
+      orphans: 2;
+      widows: 2;
+    }
+
+    /* Cards — tighter, lighter */
+    .card, .week-block, .drug, .routine-block, .phone, .appt {
+      break-inside: avoid;
+      box-shadow: none !important;
+    }
+
+    .card {
+      background: #f6f1e6 !important;
+      border: 0.75pt solid #888 !important;
+      padding: 8pt 12pt;
+      margin: 8pt 0;
+      border-radius: 2pt;
+    }
+
+    .card.alarm {
+      background: #fdf2f2 !important;
+      border: 1.25pt solid #8a2020 !important;
+    }
+
+    .card.alarm::before {
+      background: #8a2020 !important;
+      color: #fff !important;
+      width: 22pt;
+      height: 22pt;
+      top: -11pt;
+      left: 12pt;
+      font-size: 13pt;
+    }
+
+    .card.alarm h3, .card.alarm h4 {
+      color: #8a2020 !important;
+      margin-top: 4pt;
+    }
+
+    .card.calm {
+      background: #f0f4ee !important;
+      border: 1pt solid #4a5d3a !important;
+    }
+
+    .card.calm h3, .card.calm h4 {
+      color: #2d3a23 !important;
+    }
+
+    .card.dark {
+      background: #1a1814 !important;
+      color: #f5f0e6 !important;
+      border: none !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .card.dark h3 {
+      color: #c8932a !important;
+    }
+
+    .card.dark strong {
+      color: #f5f0e6 !important;
+    }
+
+    /* Checkbox: real ink square for pen-checking */
+    .check-list input[type="checkbox"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 11pt;
+      height: 11pt;
+      border: 1.25pt solid #111;
+      background: #fff !important;
+      border-radius: 1.5pt;
+      margin-top: 1.5pt;
+      flex-shrink: 0;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .check-list input[type="checkbox"]:checked {
+      background: #111 !important;
+    }
+
+    .check-list input[type="checkbox"]:checked::after {
+      color: #fff !important;
+      font-size: 10pt;
+      content: "✓";
+    }
+
+    .check-list li {
+      padding: 5pt 10pt;
+      break-inside: avoid;
+      gap: 8pt;
+      border-bottom: 0.5pt dashed #ccc;
+    }
+
+    .check-list label .lbl-main {
+      font-size: 10pt;
+    }
+
+    .check-list label .lbl-sub {
+      font-size: 8.75pt;
+      color: #555;
+    }
+
+    /* Week blocks: keep header with at least one item */
+    .week-block {
+      margin-bottom: 10pt;
+      break-inside: avoid-page;
+      border: 0.75pt solid #888;
+      border-radius: 2pt;
+    }
+
+    .week-header {
+      background: #1a1814 !important;
+      color: #f5f0e6 !important;
+      padding: 6pt 10pt;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .week-title {
+      font-size: 14pt;
+    }
+
+    .week-label {
+      font-size: 8.5pt;
+      color: #c8932a !important;
+    }
+
+    .week-dates {
+      font-size: 8.5pt;
+      color: #b8a87a !important;
+    }
+
+    .check-list {
+      padding: 4pt 0;
+    }
+
+    /* Drug grid: keep side-by-side */
+    .drug-grid {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 8pt;
+      break-inside: avoid;
+    }
+
+    .drug {
+      background: #f6f1e6 !important;
+      border: 0.75pt solid #888 !important;
+      padding: 8pt 10pt;
+    }
+
+    .drug-name { font-size: 16pt; margin-bottom: 2pt; }
+    .drug-brand { font-size: 9pt; margin-bottom: 6pt; }
+    .drug-dose { font-size: 9.5pt; }
+    .drug-dose strong { font-size: 10.5pt; margin-bottom: 3pt; }
+
+    .drug-tag {
+      font-size: 7.5pt !important;
+      padding: 2pt 6pt;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .drug-tag.strong { background: #8a2020 !important; color: #fff !important; }
+    .drug-tag.mild { background: #4a5d3a !important; color: #fff !important; }
+
+    /* Phone grid: 4-up to use the page */
+    .phone-grid {
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 6pt;
+    }
+
+    .phone {
+      background: #fff !important;
+      border: 0.75pt solid #888 !important;
+      padding: 8pt 10pt;
+    }
+
+    .phone.urgent {
+      background: #fdf2f2 !important;
+      border: 1.25pt solid #8a2020 !important;
+    }
+
+    .phone.urgent .phone-num { color: #8a2020 !important; }
+    .phone.urgent .phone-label { color: #8a2020 !important; }
+
+    .phone-label {
+      font-size: 8pt;
+      margin-bottom: 2pt;
+    }
+
+    .phone-num {
+      font-size: 13pt !important;
+      color: #111 !important;
+    }
+
+    /* Appointments — denser */
+    .appt {
+      padding: 8pt 0;
+      grid-template-columns: 60pt 1fr;
+      gap: 14pt;
+    }
+
+    .appt-day { font-size: 22pt !important; }
+    .appt-mo { font-size: 8.5pt; }
+    .appt-time { font-size: 8.5pt; }
+    .appt-info h4 { font-size: 11pt; margin-bottom: 2pt; }
+    .appt-info p { font-size: 9pt; margin-bottom: 1pt; }
+
+    /* Daily routine: 4-column grid stays */
+    .routine {
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 6pt;
+      break-inside: avoid;
+    }
+
+    .routine-block {
+      background: #f6f1e6 !important;
+      border: 0.75pt solid #888 !important;
+      padding: 6pt 8pt;
+    }
+
+    .routine-time { font-size: 10pt; margin-bottom: 4pt; }
+    .routine-block ul { font-size: 8.5pt; padding-left: 12pt; margin: 0; }
+    .routine-block li { margin-bottom: 2pt; }
+
+    /* Pull quote */
+    .pull {
+      font-size: 13pt !important;
+      margin: 12pt 0 !important;
+      padding-left: 12pt;
+    }
+
+    .pull::before {
+      font-size: 1.4em;
+      left: -0.45em;
+    }
+
+    /* Footer — single line at the end */
+    footer {
+      margin-top: 18pt;
+      padding-top: 10pt;
+      border-top: 1pt solid #888;
+      font-size: 8.5pt;
+      color: #555;
+    }
+
+    footer p { margin-bottom: 2pt; }
+  }
+</style>
+</head>
+<body>
+
+<a href="recovery.pdf" class="print-btn" title="Download the printable PDF" download>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+    <rect x="6" y="14" width="12" height="8"></rect>
+  </svg>
+  Download PDF
+</a>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow">A Family Recovery Guide · For Dad</div>
+  <h1 class="title">Dad's Shoulder<br><em>Recovery Plan</em></h1>
+  <p class="subtitle">Everything that happened, what to do every day, and how to take care of him until he's back on his feet.</p>
+  <div class="meta-bar">
+    <div>Patient<strong>Dad, age 76</strong></div>
+    <div>Surgery date<strong>Monday, May 11, 2026</strong></div>
+    <div>Surgeon<strong>Dr. Jonathan Silver</strong></div>
+    <div>Hospital<strong>NYU Langone Orthopedic</strong></div>
+  </div>
+</header>
+
+<!-- ============ TABS ============ -->
+<div class="tabs" role="tablist">
+  <button class="tab-btn active" data-tab="overview"><span class="tab-num">i.</span>Start Here</button>
+  <button class="tab-btn" data-tab="checklist"><span class="tab-num">ii.</span>Week-by-Week Checklist</button>
+  <button class="tab-btn" data-tab="daily"><span class="tab-num">iii.</span>Every Day</button>
+  <button class="tab-btn" data-tab="meds"><span class="tab-num">iv.</span>Medications</button>
+  <button class="tab-btn" data-tab="warnings"><span class="tab-num">v.</span>Warning Signs</button>
+  <button class="tab-btn" data-tab="appts"><span class="tab-num">vi.</span>Appointments & Phones</button>
+</div>
+
+<!-- ============ TAB 1: OVERVIEW ============ -->
+<div class="tab-panel active" id="overview">
+
+  <h2 class="section-title">What happened, <em>simply</em></h2>
+  <p class="section-intro">Dad fell back in March and tore his shoulder. On May 11, the surgeon fixed it. Now it has to heal slowly. Your job for the next 6 weeks is to keep his arm still and keep him comfortable.</p>
+
+  <h3>The fall and the tear</h3>
+  <p>On March 3, Dad fell and landed on his elbow. The force jammed his arm up and ripped the tendons in his shoulder. These tendons are called the <strong>rotator cuff</strong>. They are what let you lift your arm.</p>
+  <p>Before the fall, Dad could use his arm normally. After it, he could barely lift it halfway, and it hurt all the time, especially at night. An MRI scan showed the tendons were torn off the bone.</p>
+
+  <h3>The surgery</h3>
+  <p>On May 11, Dr. Silver fixed the tear. He used a tiny camera and small tools through small cuts in the shoulder. This is much easier than open surgery. It also means smaller scars.</p>
+  <p>He sewed the torn tendons back to the bone. He used special little anchors to hold them in place. He also added a <strong>patch</strong> on top, like a bandage on the inside, to make the repair stronger.</p>
+  <p>The surgery went well. No problems. Dad came home the same day.</p>
+
+  <div class="pull">The repair held. The tendon was flush against the bone.<br><span style="font-size:14px; font-style:normal; color:var(--ink-faint); letter-spacing:0.05em; font-family:'Bricolage Grotesque', sans-serif; text-transform:uppercase; font-weight:600;">From the surgeon's notes</span></div>
+
+  <h3>What to know going in</h3>
+  <ul>
+    <li>The shoulder needs <strong>4 to 6 weeks</strong> in the sling. No exceptions.</li>
+    <li>Then physical therapy starts and lasts months.</li>
+    <li>Full recovery takes <strong>6 to 9 months</strong>. Be patient.</li>
+    <li>The biggest risk is moving the arm too soon. If the repair fails, he needs another surgery.</li>
+  </ul>
+
+  <div class="card dark">
+    <h3>The 4 most important rules</h3>
+    <ol style="margin-bottom:0;">
+      <li><strong>Sling stays on.</strong> Day and night. Even sleeping. Only off for showers.</li>
+      <li><strong>No lifting with that arm.</strong> Nothing heavier than a coffee cup.</li>
+      <li><strong>Take pain meds with food.</strong> Always. Or he'll get sick to his stomach.</li>
+      <li><strong>Ice the shoulder.</strong> 15 to 20 minutes at a time. Many times a day for the first week.</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============ TAB 2: CHECKLIST ============ -->
+<div class="tab-panel" id="checklist">
+
+  <h2 class="section-title">Week-by-week <em>checklist</em></h2>
+  <p class="section-intro">Check things off as you do them. Your progress saves in this browser automatically, so you can come back anytime. Want a paper copy? Hit the Print button in the top right.</p>
+
+  <div class="progress-text">Your progress so far:</div>
+  <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+  <!-- WEEK 1 -->
+  <div class="week-block">
+    <div class="week-header">
+      <div>
+        <div class="week-label">Week 1</div>
+        <div class="week-title">The hard week</div>
+      </div>
+      <div class="week-dates">May 11 – May 17</div>
+    </div>
+    <ul class="check-list">
+      <li class="key-task"><input type="checkbox" id="c1-1"><label for="c1-1"><span class="lbl-main">First night: take pain medication BEFORE bed</span><span class="lbl-sub">The numbing block from surgery wears off in the middle of the night. Don't wait for the pain.</span></label></li>
+      <li><input type="checkbox" id="c1-2"><label for="c1-2"><span class="lbl-main">Pick up oxycodone and Tylenol from the NYU pharmacy</span><span class="lbl-sub">301 East 17th Street, NYC. Open Mon–Fri, 9 AM to 10 PM.</span></label></li>
+      <li><input type="checkbox" id="c1-3"><label for="c1-3"><span class="lbl-main">Set pillows around his arm for sleeping</span><span class="lbl-sub">So he can't roll onto it. A recliner chair is even better for the first 2 nights.</span></label></li>
+      <li><input type="checkbox" id="c1-4"><label for="c1-4"><span class="lbl-main">Check his fingers every 2 hours on day 1</span><span class="lbl-sub">They should look pink. If they look pale, blue, or stay numb past 48 hours, call the doctor.</span></label></li>
+      <li><input type="checkbox" id="c1-5"><label for="c1-5"><span class="lbl-main">Ice the shoulder many times a day</span><span class="lbl-sub">15 to 20 minutes on, then off. Use the cooling sleeve if he has one.</span></label></li>
+      <li><input type="checkbox" id="c1-6"><label for="c1-6"><span class="lbl-main">Help him eat something every time before pain meds</span><span class="lbl-sub">Even just crackers or toast. Empty stomach + pain pills = throwing up.</span></label></li>
+      <li><input type="checkbox" id="c1-7"><label for="c1-7"><span class="lbl-main">Keep dressing dry. NO showers for 5 days.</span><span class="lbl-sub">Sponge baths only. No wet washcloth near the shoulder.</span></label></li>
+      <li class="key-task"><input type="checkbox" id="c1-8"><label for="c1-8"><span class="lbl-main">Day 5 (May 16): take off the dressing</span><span class="lbl-sub">Rinse the cuts gently with soap and water. Cover with new Band-Aids.</span></label></li>
+      <li><input type="checkbox" id="c1-9"><label for="c1-9"><span class="lbl-main">Push fluids and fiber. Watch for constipation.</span><span class="lbl-sub">Pain pills cause this. Prune juice, fruit, water. A stool softener like Colace helps.</span></label></li>
+      <li><input type="checkbox" id="c1-10"><label for="c1-10"><span class="lbl-main">Help him with everything: dressing, eating, bathroom</span><span class="lbl-sub">He cannot use that arm at all. Lay out clothes. Cut up food. He'll need help.</span></label></li>
+    </ul>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week-block">
+    <div class="week-header">
+      <div>
+        <div class="week-label">Week 2</div>
+        <div class="week-title">First check-up</div>
+      </div>
+      <div class="week-dates">May 18 – May 24</div>
+    </div>
+    <ul class="check-list">
+      <li class="key-task"><input type="checkbox" id="c2-1"><label for="c2-1"><span class="lbl-main">May 19, 10:30 AM: Post-op visit at Bay Ridge</span><span class="lbl-sub">Stitches come out. With Svetlana, the PA. Arrive 15 min early. Bring his meds list.</span></label></li>
+      <li><input type="checkbox" id="c2-2"><label for="c2-2"><span class="lbl-main">Start cutting back on oxycodone</span><span class="lbl-sub">Try 1 pill instead of 2. Use Tylenol in between. The goal is to use less each day.</span></label></li>
+      <li><input type="checkbox" id="c2-3"><label for="c2-3"><span class="lbl-main">Showers OK now</span><span class="lbl-sub">Sling can come off in the shower. Arm stays at his side, hanging straight down. You wash for him.</span></label></li>
+      <li><input type="checkbox" id="c2-4"><label for="c2-4"><span class="lbl-main">Sling back on right after towel-off</span><span class="lbl-sub">Don't let him "test" the arm. No exceptions.</span></label></li>
+      <li><input type="checkbox" id="c2-5"><label for="c2-5"><span class="lbl-main">Keep icing, but less often</span><span class="lbl-sub">A few times a day instead of all day.</span></label></li>
+      <li><input type="checkbox" id="c2-6"><label for="c2-6"><span class="lbl-main">Cover incisions with a fresh Band-Aid daily</span><span class="lbl-sub">Until the doctor says they're fully healed.</span></label></li>
+    </ul>
+  </div>
+
+  <!-- WEEK 3-4 -->
+  <div class="week-block">
+    <div class="week-header">
+      <div>
+        <div class="week-label">Weeks 3 & 4</div>
+        <div class="week-title">Settling in</div>
+      </div>
+      <div class="week-dates">May 25 – June 7</div>
+    </div>
+    <ul class="check-list">
+      <li class="key-task"><input type="checkbox" id="c3-1"><label for="c3-1"><span class="lbl-main">May 28, 11:15 AM: Dr. Dekhovich + arterial scan</span><span class="lbl-sub">Different doctor. West Brighton. Two appointments back-to-back (the scan is at 11:45).</span></label></li>
+      <li class="key-task"><input type="checkbox" id="c3-2"><label for="c3-2"><span class="lbl-main">June 4: Cardiac catheterization with Dr. Kamran</span><span class="lbl-sub">This is for his heart, not the shoulder. Confirm the time with cardiology.</span></label></li>
+      <li><input type="checkbox" id="c3-3"><label for="c3-3"><span class="lbl-main">Try to be off oxycodone</span><span class="lbl-sub">Just Tylenol now if he needs it. Call doctor if pain is still bad.</span></label></li>
+      <li><input type="checkbox" id="c3-4"><label for="c3-4"><span class="lbl-main">SLING STILL ON. All the time.</span><span class="lbl-sub">This is when people start cheating. Do not let him.</span></label></li>
+      <li><input type="checkbox" id="c3-5"><label for="c3-5"><span class="lbl-main">Move his hand and wrist to stay loose</span><span class="lbl-sub">Open and close the fist. Wiggle fingers. Just hand and wrist, nothing higher.</span></label></li>
+      <li><input type="checkbox" id="c3-6"><label for="c3-6"><span class="lbl-main">Watch his mood</span><span class="lbl-sub">By now he's bored, frustrated, maybe down. Normal. Get him out for short walks.</span></label></li>
+    </ul>
+  </div>
+
+  <!-- WEEK 5-6 -->
+  <div class="week-block">
+    <div class="week-header">
+      <div>
+        <div class="week-label">Weeks 5 & 6</div>
+        <div class="week-title">Sling comes off (when doctor says)</div>
+      </div>
+      <div class="week-dates">June 8 – June 21</div>
+    </div>
+    <ul class="check-list">
+      <li class="key-task"><input type="checkbox" id="c4-1"><label for="c4-1"><span class="lbl-main">Schedule next visit with Dr. Silver</span><span class="lbl-sub">If they didn't already give one. The office number is 929-455-2000.</span></label></li>
+      <li class="key-task"><input type="checkbox" id="c4-2"><label for="c4-2"><span class="lbl-main">Ask the doctor when to STOP wearing the sling</span><span class="lbl-sub">Don't take it off on your own. Wait for the surgeon to say so.</span></label></li>
+      <li><input type="checkbox" id="c4-3"><label for="c4-3"><span class="lbl-main">Get the physical therapy referral in hand</span><span class="lbl-sub">Ask Dr. Silver's office for the script and a recommended PT clinic close to him.</span></label></li>
+      <li><input type="checkbox" id="c4-4"><label for="c4-4"><span class="lbl-main">Book first PT appointment</span><span class="lbl-sub">As soon as the doctor clears it. PT 2-3 times a week to start.</span></label></li>
+    </ul>
+  </div>
+
+  <!-- MONTHS 2-3 -->
+  <div class="week-block">
+    <div class="week-header">
+      <div>
+        <div class="week-label">Months 2 & 3</div>
+        <div class="week-title">Physical therapy</div>
+      </div>
+      <div class="week-dates">July – August</div>
+    </div>
+    <ul class="check-list">
+      <li><input type="checkbox" id="c5-1"><label for="c5-1"><span class="lbl-main">PT 2-3 times a week</span><span class="lbl-sub">The therapist will move his arm for him at first. Then teach him exercises.</span></label></li>
+      <li><input type="checkbox" id="c5-2"><label for="c5-2"><span class="lbl-main">Do the home exercises EVERY DAY</span><span class="lbl-sub">PT only works if he does them at home. Set a daily reminder.</span></label></li>
+      <li class="key-task"><input type="checkbox" id="c5-3"><label for="c5-3"><span class="lbl-main">July 16, 11:00 AM: GI follow-up with Dr. Su</span><span class="lbl-sub">Stomach/GI doctor. Manhattan. Not related to shoulder.</span></label></li>
+      <li><input type="checkbox" id="c5-4"><label for="c5-4"><span class="lbl-main">Still no heavy lifting</span><span class="lbl-sub">No suitcases, no groceries, no grandkids on that arm.</span></label></li>
+    </ul>
+  </div>
+
+  <!-- MONTHS 4+ -->
+  <div class="week-block">
+    <div class="week-header">
+      <div>
+        <div class="week-label">Months 4 to 9</div>
+        <div class="week-title">Getting back to normal</div>
+      </div>
+      <div class="week-dates">September onward</div>
+    </div>
+    <ul class="check-list">
+      <li><input type="checkbox" id="c6-1"><label for="c6-1"><span class="lbl-main">Strength training added to PT</span><span class="lbl-sub">Slowly building the muscles back up.</span></label></li>
+      <li><input type="checkbox" id="c6-2"><label for="c6-2"><span class="lbl-main">Most normal activities are OK</span><span class="lbl-sub">Driving, light cooking, dressing himself. The doctor will tell him when.</span></label></li>
+      <li><input type="checkbox" id="c6-3"><label for="c6-3"><span class="lbl-main">Full recovery: 6 to 9 months out</span><span class="lbl-sub">Heavy lifting and full strength take this long. Don't rush.</span></label></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ TAB 3: DAILY ============ -->
+<div class="tab-panel" id="daily">
+
+  <h2 class="section-title">A normal day, <em>roughly</em></h2>
+  <p class="section-intro">For the first 2 weeks, every day looks like this. Don't stress about exact times. Just make sure each thing happens.</p>
+
+  <div class="routine">
+    <div class="routine-block">
+      <div class="routine-time">Morning</div>
+      <ul>
+        <li>Help him out of bed slowly</li>
+        <li>Bathroom, then breakfast</li>
+        <li>Take morning meds (with food)</li>
+        <li>Pain meds if he needs them</li>
+        <li>Ice the shoulder, 15-20 min</li>
+        <li>Check fingers look pink</li>
+      </ul>
+    </div>
+
+    <div class="routine-block">
+      <div class="routine-time">Afternoon</div>
+      <ul>
+        <li>Lunch (with food = pain meds OK)</li>
+        <li>Short walk if he's up for it</li>
+        <li>Ice again, 15-20 min</li>
+        <li>Rest in a recliner or propped up</li>
+        <li>Help with anything two-handed</li>
+      </ul>
+    </div>
+
+    <div class="routine-block">
+      <div class="routine-time">Evening</div>
+      <ul>
+        <li>Dinner with evening meds</li>
+        <li>Ice one more time</li>
+        <li>Pain meds if needed</li>
+        <li>Help him brush teeth, wash up</li>
+      </ul>
+    </div>
+
+    <div class="routine-block">
+      <div class="routine-time">Bedtime</div>
+      <ul>
+        <li><strong>Pain meds BEFORE sleep</strong></li>
+        <li>Sling stays ON</li>
+        <li>Pillows around the arm</li>
+        <li>Phone within reach</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>The sling: how to put it on</h3>
+  <ol>
+    <li>Sit him down. Rest his arm in his lap or on a pillow.</li>
+    <li>Slip his elbow into the bend of the sling.</li>
+    <li>Reach the long strap up and over the OTHER shoulder (the good one).</li>
+    <li>Pull the Velcro through the rings on the front, then stick it down.</li>
+    <li>Check: elbow at 90 degrees, arm across his belly, only wrist and hand showing.</li>
+  </ol>
+
+  <h3>Ice / cooling sleeve</h3>
+  <ul>
+    <li><strong>15 to 20 minutes on, then off.</strong> Repeat 3-5 times a day in week 1.</li>
+    <li>If he has the cooling sleeve (the machine that pumps cold water), follow the machine's directions. Better than ice packs.</li>
+    <li>For ice packs, wrap in a thin towel. Never put ice straight on skin.</li>
+    <li>Best times: morning, before bed, before pain meds.</li>
+  </ul>
+
+  <h3>Showering</h3>
+  <ul>
+    <li><strong>First 5 days: no showers.</strong> Sponge baths only.</li>
+    <li><strong>After day 5:</strong> Take the sling off. He sits on a shower bench or stands carefully. His arm hangs straight down at his side. You wash him. Pat dry. Sling back on right away.</li>
+    <li>No baths, pools, hot tubs until the doctor says OK.</li>
+  </ul>
+
+  <div class="card calm">
+    <h3>Things he absolutely cannot do</h3>
+    <ul style="margin-bottom:0;">
+      <li>Lift anything heavier than a coffee cup with that arm</li>
+      <li>Reach overhead</li>
+      <li>Sleep without the sling</li>
+      <li>Drive while taking oxycodone</li>
+      <li>Drink alcohol while on pain meds</li>
+      <li>Take other pain pills (like Advil or aspirin) without asking the doctor</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ TAB 4: MEDS ============ -->
+<div class="tab-panel" id="meds">
+
+  <h2 class="section-title">All the <em>medications</em></h2>
+  <p class="section-intro">Two new pain pills to start. Some old ones to stop. Everything else stays the same.</p>
+
+  <h3>The two new pain medications</h3>
+
+  <div class="drug-grid">
+    <div class="drug">
+      <span class="drug-tag strong">Strong · Use with care</span>
+      <div class="drug-name">Oxycodone</div>
+      <div class="drug-brand">also called Roxicodone · 5 mg pill</div>
+      <div class="drug-dose">
+        <strong>2 pills every 6 hours, only if needed</strong>
+        Drop down to 1 pill as the pain gets better. Never more than 8 pills (40 mg) in one day. Always take with food. The bottle has 30 pills total.
+      </div>
+    </div>
+
+    <div class="drug">
+      <span class="drug-tag mild">Mild · Safer</span>
+      <div class="drug-name">Tylenol</div>
+      <div class="drug-brand">also called Acetaminophen · 500 mg pill</div>
+      <div class="drug-dose">
+        <strong>2 pills every 6 hours, only if needed</strong>
+        Use this in BETWEEN oxycodone doses for better coverage. The bottle has 60 pills.
+      </div>
+    </div>
+  </div>
+
+  <div class="card dark">
+    <h3>The pain plan, simply</h3>
+    <p style="margin-bottom:8px;">Use BOTH together for the first few days. Layer them. Take Tylenol 3 hours after oxycodone. That way he always has something working.</p>
+    <p style="margin-bottom:8px;"><strong>Then taper off.</strong> Drop oxycodone first, one at a time. Keep using Tylenol if he needs it.</p>
+    <p style="margin-bottom:0;"><strong>Always with food.</strong> Even just crackers. Empty stomach makes him throw up.</p>
+  </div>
+
+  <div class="card alarm">
+    <h3>The first night rule</h3>
+    <p style="margin-bottom:0;">The numbing block from surgery wears off in the middle of the night. Take pain medication BEFORE bed on the first night. With food. Don't skip this. He'll thank you in the morning.</p>
+  </div>
+
+  <h3>Pills to STOP taking</h3>
+  <p>These were paused for the surgery. Don't restart any of them without asking the doctor first.</p>
+  <ul>
+    <li><strong>Aspirin 81 mg</strong> (Bayer)</li>
+    <li><strong>Voltaren 75 mg</strong> (also called diclofenac)</li>
+    <li><strong>Gralise 300 mg</strong> (also called gabapentin)</li>
+    <li><strong>Crestor 10 mg</strong> (also called rosuvastatin)</li>
+    <li><strong>Prilosec 40 mg</strong> (also called omeprazole)</li>
+    <li><strong>Flonase nasal spray</strong></li>
+    <li><strong>Kenalog ointment</strong></li>
+    <li><strong>Alpha Lipoic Acid, Vitamin B Complex</strong></li>
+  </ul>
+  <p style="font-size:15px; color:var(--ink-soft);">Aspirin and Voltaren make you bleed more. They were stopped before surgery. Ask Dr. Silver or Dr. Beker when he can start them again.</p>
+
+  <h3>Pills to KEEP taking as normal</h3>
+  <ul>
+    <li><strong>Metformin 500 mg</strong> — once a day with meals (for his diabetes)</li>
+    <li><strong>Hyzaar 100/12.5 mg</strong> (losartan-HCTZ) — once a day (blood pressure)</li>
+    <li><strong>Toprol XL 25 mg</strong> (metoprolol) — once a day (heart/blood pressure)</li>
+    <li><strong>Pletal 100 mg</strong> (cilostazol) — twice a day, morning and evening (circulation)</li>
+    <li><strong>Blood sugar checks</strong> — same as always</li>
+  </ul>
+
+  <div class="card alarm">
+    <h3>NEVER mix oxycodone with these</h3>
+    <ul style="margin-bottom:0;">
+      <li><strong>Alcohol.</strong> Even one drink. It can stop his breathing.</li>
+      <li><strong>Sleeping pills</strong> (Ambien, etc.)</li>
+      <li><strong>Anti-anxiety pills</strong> (Xanax, Ativan, Klonopin)</li>
+      <li><strong>Other pain pills</strong> from any source</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ TAB 5: WARNINGS ============ -->
+<div class="tab-panel" id="warnings">
+
+  <h2 class="section-title">When to <em>worry</em></h2>
+  <p class="section-intro">Most of recovery is boring and uneventful. Good. But know what to watch for. These are the things that need a phone call or an ER trip.</p>
+
+  <div class="card alarm">
+    <h3>Call 911 / Go to the ER NOW</h3>
+    <ul style="margin-bottom:0;">
+      <li><strong>Chest pain or trouble breathing</strong></li>
+      <li><strong>His fingers turn pale, blue, or purple</strong></li>
+      <li><strong>His arm stays totally numb after 48 hours</strong></li>
+      <li><strong>Heavy bleeding from the bandage</strong></li>
+      <li><strong>He's confused, very weak, or dizzy</strong></li>
+      <li><strong>He hasn't peed in 8+ hours</strong></li>
+      <li><strong>You can't wake him up</strong> or his breathing is very slow</li>
+    </ul>
+  </div>
+
+  <div class="card alarm">
+    <h3>Call Dr. Silver's office: 929-455-2000</h3>
+    <ul style="margin-bottom:0;">
+      <li><strong>Fever over 101°F (38.3°C)</strong></li>
+      <li><strong>Chills</strong></li>
+      <li><strong>Cuts get red, hot, swollen, or have pus</strong></li>
+      <li><strong>Pus or strange liquid coming from the cuts</strong></li>
+      <li><strong>Pain that the medication is not helping at all</strong></li>
+      <li><strong>Throwing up that won't stop</strong></li>
+      <li><strong>Pain or swelling in his calf (lower leg)</strong> — could be a blood clot</li>
+    </ul>
+  </div>
+
+  <p style="font-size:15px; color:var(--ink-soft); margin-top:16px;">If you can't reach the office and you're worried, take him to urgent care or the ER. Tell them he had shoulder surgery on May 11 with Dr. Silver at NYU.</p>
+
+  <h3>Things that look bad but are normal</h3>
+  <ul>
+    <li><strong>Bruising down the arm.</strong> Normal. The blood drains down with gravity. Can spread to his hand. Goes away in 1-2 weeks.</li>
+    <li><strong>Some swelling.</strong> Normal. Ice helps.</li>
+    <li><strong>Tingling or "pins and needles"</strong> as the numbing block wears off. Normal. This is the cue to take pain meds.</li>
+    <li><strong>Constipation.</strong> Normal from the pain pills. Push fluids and fiber. A laxative is fine.</li>
+    <li><strong>Trouble sleeping.</strong> Common. Sleeping in a recliner helps.</li>
+    <li><strong>Feeling down or grumpy</strong> after a few days. Normal. Surgery is hard on the spirit.</li>
+  </ul>
+</div>
+
+<!-- ============ TAB 6: APPOINTMENTS & PHONES ============ -->
+<div class="tab-panel" id="appts">
+
+  <h2 class="section-title">Appointments & <em>phone numbers</em></h2>
+  <p class="section-intro">Keep this page handy. Every appointment Dr. Silver scheduled, plus every phone number you might need.</p>
+
+  <h3>Upcoming appointments</h3>
+
+  <div class="appt">
+    <div class="appt-date">
+      <div class="appt-mo">May</div>
+      <div class="appt-day">19</div>
+      <div class="appt-time">10:30 AM</div>
+    </div>
+    <div class="appt-info">
+      <h4>Stitches come out (post-op visit)</h4>
+      <p>With Svetlana, PA (Dr. Silver's PA)</p>
+      <p>NYU Langone Ambulatory Care, Bay Ridge</p>
+      <p>6740 Fourth Avenue, 4th Floor, Brooklyn</p>
+      <p>📞 929-455-2000</p>
+      <p style="color:var(--accent); font-weight:600; margin-top:6px;">Get there 15 minutes early.</p>
+    </div>
+  </div>
+
+  <div class="appt">
+    <div class="appt-date">
+      <div class="appt-mo">May</div>
+      <div class="appt-day">28</div>
+      <div class="appt-time">11:15 AM</div>
+    </div>
+    <div class="appt-info">
+      <h4>Follow-up + leg artery scan</h4>
+      <p>With Dr. Lyudmila Dekhovich, then a scan at 11:45 AM</p>
+      <p>NYU Langone Medical Associates, West Brighton</p>
+      <p>2857 West 8th Street, Suite 200, Brooklyn</p>
+      <p>📞 929-455-3060</p>
+    </div>
+  </div>
+
+  <div class="appt">
+    <div class="appt-date">
+      <div class="appt-mo">Jun</div>
+      <div class="appt-day">04</div>
+      <div class="appt-time">scheduled</div>
+    </div>
+    <div class="appt-info">
+      <h4>Heart procedure (cardiac cath)</h4>
+      <p>With Dr. Haroon Kamran</p>
+      <p>This is for his heart, not the shoulder. Confirm time with cardiology.</p>
+    </div>
+  </div>
+
+  <div class="appt">
+    <div class="appt-date">
+      <div class="appt-mo">Jun</div>
+      <div class="appt-day">29</div>
+      <div class="appt-time">11:15 AM</div>
+    </div>
+    <div class="appt-info">
+      <h4>Eye doctor (first visit)</h4>
+      <p>With Dr. Shani Golan</p>
+      <p>NYU Langone Eye Center, Bay Ridge</p>
+      <p>7901 4th Avenue, Suite A4, Brooklyn</p>
+      <p>📞 718-748-1334</p>
+    </div>
+  </div>
+
+  <div class="appt">
+    <div class="appt-date">
+      <div class="appt-mo">Jul</div>
+      <div class="appt-day">16</div>
+      <div class="appt-time">11:00 AM</div>
+    </div>
+    <div class="appt-info">
+      <h4>Stomach doctor follow-up</h4>
+      <p>With Dr. Feng Su</p>
+      <p>NYU Langone Gastroenterology, Manhattan</p>
+      <p>150 East 32nd Street, Suite 101</p>
+      <p>📞 212-263-3643</p>
+    </div>
+  </div>
+
+  <p style="margin-top:24px; font-size:15px; color:var(--ink-soft);">Dr. Silver's office will likely add more shoulder visits as he heals. Physical therapy starts around weeks 4-6.</p>
+
+  <div class="ornament">✦  ✦  ✦</div>
+
+  <h3>Important phone numbers</h3>
+
+  <div class="phone-grid">
+    <div class="phone urgent">
+      <div class="phone-label">EMERGENCY</div>
+      <a href="tel:911" class="phone-num">911</a>
+    </div>
+    <div class="phone urgent">
+      <div class="phone-label">Poison Control (medication mistake)</div>
+      <a href="tel:18002221222" class="phone-num">800-222-1222</a>
+    </div>
+    <div class="phone">
+      <div class="phone-label">Dr. Silver's office (the surgeon)</div>
+      <a href="tel:9294552000" class="phone-num">929-455-2000</a>
+    </div>
+    <div class="phone">
+      <div class="phone-label">NYU Orthopedic Hospital main</div>
+      <a href="tel:18884533627" class="phone-num">888-453-3627</a>
+    </div>
+    <div class="phone">
+      <div class="phone-label">Anesthesia (numbing block questions)</div>
+      <a href="tel:2125986085" class="phone-num">212-598-6085</a>
+    </div>
+    <div class="phone">
+      <div class="phone-label">Anesthesia after hours</div>
+      <a href="tel:2122637300" class="phone-num">212-263-7300</a>
+    </div>
+    <div class="phone">
+      <div class="phone-label">NYU Pharmacy (East 17th St)</div>
+      <a href="tel:2125986143" class="phone-num">212-598-6143</a>
+    </div>
+    <div class="phone">
+      <div class="phone-label">988 Crisis Line (mental health)</div>
+      <a href="tel:988" class="phone-num">988</a>
+    </div>
+  </div>
+
+  <h3 style="margin-top:32px;">When you call the doctor's office</h3>
+  <p>Have these ready before you dial. The MRN is the medical record number, it's on every piece of paperwork from NYU.</p>
+  <ul>
+    <li>His full name</li>
+    <li>His date of birth</li>
+    <li>His MRN (medical record #)</li>
+    <li>Surgery date: <strong>May 11, 2026</strong></li>
+    <li>Surgeon: <strong>Dr. Silver</strong></li>
+  </ul>
+</div>
+
+<footer>
+  <p>This guide was made from Dr. Silver's surgery notes and the discharge papers from NYU Langone, May 11, 2026.</p>
+  <p>It's a plain-English summary. Not a replacement for the doctor. When in doubt, call.</p>
+</footer>
+
+</div>
+
+<script>
+  // Tab switching
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(target).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // Checkbox persistence + progress bar
+  const STORAGE_KEY = 'dad-shoulder-recovery-progress';
+  const checkboxes = document.querySelectorAll('.check-list input[type="checkbox"]');
+  const progressFill = document.getElementById('progress');
+
+  function loadProgress() {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    checkboxes.forEach(cb => {
+      if (saved[cb.id]) cb.checked = true;
+    });
+    updateProgress();
+  }
+
+  function saveProgress() {
+    const state = {};
+    checkboxes.forEach(cb => {
+      if (cb.checked) state[cb.id] = true;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function updateProgress() {
+    const total = checkboxes.length;
+    const done = Array.from(checkboxes).filter(cb => cb.checked).length;
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    if (progressFill) {
+      progressFill.style.width = pct + '%';
+    }
+    const text = document.querySelector('.progress-text');
+    if (text) {
+      text.textContent = done + ' of ' + total + ' tasks done (' + pct + '%)';
+    }
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', () => {
+      saveProgress();
+      updateProgress();
+    });
+  });
+
+  loadProgress();
+</script>
+
+</body>
+</html>

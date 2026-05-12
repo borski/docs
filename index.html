@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>docs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Literata:ital,opsz,wght@0,7..72,400;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1814;
+    --ink-soft: #4a4439;
+    --ink-faint: #7a7264;
+    --paper: #f5f0e6;
+    --accent: #8c3820;
+    --gold: #c8932a;
+    --rule: #c9bda3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Literata', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    font-feature-settings: "kern", "liga", "onum";
+  }
+  .wrap { max-width: 540px; }
+  .eyebrow {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .eyebrow::before { content: "✦"; margin-right: 10px; color: var(--gold); }
+  h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .lede {
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    margin-bottom: 32px;
+  }
+  ul { list-style: none; }
+  li {
+    border-top: 1px solid var(--rule);
+    padding: 16px 0;
+  }
+  li:last-child { border-bottom: 1px solid var(--rule); }
+  a {
+    color: var(--ink);
+    text-decoration: none;
+    display: block;
+  }
+  a:hover .title { color: var(--accent); }
+  .title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+  }
+  .desc {
+    color: var(--ink-faint);
+    font-size: 14px;
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">A small collection</div>
+  <h1>docs</h1>
+  <p class="lede">Personal guides and references. Some for family, some for me.</p>
+
+  <ul>
+    <li><a href="shoulder-recovery/">
+      <div class="title">Dad's Shoulder Recovery</div>
+      <div class="desc">Plain-English guide for taking care of him after surgery</div>
+    </a></li>
+  </ul>
+</div>
+</body>
+</html>
