@@ -62,6 +62,11 @@
     .sheet { padding: 0; margin: 0; box-shadow: none; min-height: 0; }
     .print-btn, .back-link { display: none !important; }
     .pagebreak { page-break-before: always; }
+    /* Major section headers always start on a new page */
+    .page-start {
+      page-break-before: always;
+      break-before: page;
+    }
 
     /* Defensive: if backgrounds DON'T print, the dark cards still need to be readable */
     .card.dark, .rules-banner, .check-week-head {
@@ -157,7 +162,13 @@
     padding-bottom: 2pt;
     margin-bottom: 5pt;
     letter-spacing: -0.015em;
+    break-after: avoid;
+    page-break-after: avoid;
   }
+
+  /* Keep section headers glued to their content */
+  .section { break-inside: avoid-page; }
+  h2 + p, h2 + .section, h2 + .two-col { break-before: avoid; }
   h2 em {
     font-family: var(--serif);
     font-style: italic;
@@ -498,6 +509,51 @@
     margin-bottom: 2pt;
   }
 
+  /* ===== DOSE SCHEDULE ===== */
+  .dose-schedule {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 3pt;
+    padding: 5pt 7pt;
+    margin: 4pt 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 14pt;
+    row-gap: 3pt;
+  }
+  .dose-row {
+    display: grid;
+    grid-template-columns: 42pt 32pt 1fr;
+    gap: 7pt;
+    align-items: center;
+    font-size: 8.75pt;
+  }
+  .dose-time {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 9pt;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    color: var(--accent-soft);
+  }
+  .dose-pill {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 7.5pt;
+    text-align: center;
+    padding: 1.5pt 0;
+    border-radius: 2pt;
+    letter-spacing: 0.06em;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .dose-pill.oxy { background: #b04a2f; color: #fff; }
+  .dose-pill.tyl { background: var(--green); color: #fff; }
+  .dose-detail {
+    font-size: 8.5pt;
+    line-height: 1.25;
+    color: var(--bg);
+  }
+
   /* ===== DRUG GRID ===== */
   .drug-grid {
     display: grid;
@@ -744,7 +800,7 @@
 <!-- ============================== PAGE 2: CHECKLIST ============================== -->
 
 
-<div class="section">
+<div class="section page-start">
   <h2>Week-by-week <em>checklist</em></h2>
   <p style="font-size:8.5pt; color:var(--text-dim); margin-bottom:6pt;">Use a pen. The boxes are real. The web version of this guide also has these checkboxes and they save automatically in your browser.</p>
 </div>
@@ -842,18 +898,13 @@
       </ul>
     </div>
 
-    <!-- Filler card to balance column heights -->
-    <div class="card calm" style="margin-top: 8pt;">
-      <h3 style="margin-bottom: 3pt;">Reminder</h3>
-      <p style="margin: 0; font-size: 8.5pt;">If anything feels wrong and you can't reach Dr. Silver's office, call <strong>929-455-2000</strong>. Out of hours, take him to urgent care or the ER. Tell them: shoulder surgery on May 11 with Dr. Silver at NYU.</p>
-    </div>
   </div>
 </div>
 
 <!-- ============================== PAGE 3: MEDICATIONS + WARNINGS ============================== -->
 
 
-<div class="section">
+<div class="section page-start">
   <h2>All the <em>medications</em></h2>
   <p style="font-size:8.5pt; color:var(--text-dim); margin-bottom:6pt;">Two new pain pills to start. Some old ones to stop. Everything else stays the same.</p>
 </div>
@@ -879,21 +930,23 @@
   </div>
 </div>
 
-<div class="two-col" style="margin-top: 6pt;">
-  <div>
-    <div class="card dark">
-      <h3>The pain plan, simply</h3>
-      <p style="margin: 0 0 2pt;">Use BOTH together for the first few days. Layer them. Take Tylenol 3 hours after oxycodone. That way he always has something working.</p>
-      <p style="margin: 0 0 2pt;"><strong>Then taper.</strong> Drop oxycodone first, one pill at a time. Keep Tylenol if he still needs it.</p>
-      <p style="margin: 0;"><strong>Always with food.</strong> Even crackers. Empty stomach makes him throw up.</p>
-    </div>
+<div class="card dark" style="margin-top: 6pt;">
+  <h3>The pain plan: alternate them every 3 hours</h3>
+  <p style="margin: 0 0 6pt;">Pain pills wear off after 4-6 hours. If you take them <strong>together</strong>, there are stretches with no coverage. If you <strong>alternate</strong> them every 3 hours, something is always working. <strong>Always with food.</strong></p>
+  <div class="dose-schedule">
+    <div class="dose-row"><div class="dose-time">8 AM</div><div class="dose-pill oxy">OXY</div><div class="dose-detail">2 oxycodone with breakfast</div></div>
+    <div class="dose-row"><div class="dose-time">11 AM</div><div class="dose-pill tyl">TYL</div><div class="dose-detail">2 Tylenol with a snack</div></div>
+    <div class="dose-row"><div class="dose-time">2 PM</div><div class="dose-pill oxy">OXY</div><div class="dose-detail">2 oxycodone with lunch</div></div>
+    <div class="dose-row"><div class="dose-time">5 PM</div><div class="dose-pill tyl">TYL</div><div class="dose-detail">2 Tylenol with a snack</div></div>
+    <div class="dose-row"><div class="dose-time">8 PM</div><div class="dose-pill oxy">OXY</div><div class="dose-detail">2 oxycodone with dinner</div></div>
+    <div class="dose-row"><div class="dose-time">11 PM</div><div class="dose-pill tyl">TYL</div><div class="dose-detail">2 Tylenol before bed</div></div>
   </div>
-  <div>
-    <div class="card alarm">
-      <h3>The first night rule</h3>
-      <p style="margin: 0;">The numbing block from surgery wears off in the middle of the night. Take pain medication BEFORE bed on the first night. With food. Don't skip this. He'll thank you in the morning.</p>
-    </div>
-  </div>
+  <p style="margin: 5pt 0 0; font-size: 8.5pt; opacity: 0.85;">Skip a dose if he doesn't need it. As pain gets better, drop the oxycodone first. Keep Tylenol if he still needs it.</p>
+</div>
+
+<div class="card alarm" style="margin-top: 6pt;">
+  <h3>The first night rule</h3>
+  <p style="margin: 0;">The numbing block from surgery wears off in the middle of the night. Take pain medication BEFORE bed on the first night. With food. Don't skip this. He'll thank you in the morning.</p>
 </div>
 
 <div class="section" style="margin-top: 8pt;">
@@ -938,7 +991,7 @@
 
 <hr class="divider">
 
-<div class="section">
+<div class="section page-start">
   <h2>When to <em>worry</em></h2>
 </div>
 

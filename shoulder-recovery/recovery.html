@@ -464,6 +464,50 @@
     margin-bottom: 4px;
   }
 
+  /* ===== DOSE SCHEDULE ===== */
+  .dose-schedule {
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 28px;
+    row-gap: 10px;
+  }
+  @media (max-width: 600px) {
+    .dose-schedule { grid-template-columns: 1fr; }
+  }
+  .dose-row {
+    display: grid;
+    grid-template-columns: 60px 50px 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  .dose-time {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    color: var(--gold);
+    letter-spacing: -0.01em;
+  }
+  .dose-pill {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+    padding: 4px 0;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+  }
+  .dose-pill.oxy { background: #b04a2f; color: var(--paper); }
+  .dose-pill.tyl { background: var(--moss); color: var(--paper); }
+  .dose-detail {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
   /* ===== DRUG CARDS ===== */
   .drug-grid {
     display: grid;
@@ -1430,10 +1474,17 @@
   </div>
 
   <div class="card dark">
-    <h3>The pain plan, simply</h3>
-    <p style="margin-bottom:8px;">Use BOTH together for the first few days. Layer them. Take Tylenol 3 hours after oxycodone. That way he always has something working.</p>
-    <p style="margin-bottom:8px;"><strong>Then taper off.</strong> Drop oxycodone first, one at a time. Keep using Tylenol if he needs it.</p>
-    <p style="margin-bottom:0;"><strong>Always with food.</strong> Even just crackers. Empty stomach makes him throw up.</p>
+    <h3>The pain plan: alternate them every 3 hours</h3>
+    <p style="margin-bottom:14px;">Pain pills wear off after 4-6 hours. If you take them <strong>together</strong>, there are stretches with no coverage. If you <strong>alternate</strong> them every 3 hours, something is always working. <strong>Always with food.</strong></p>
+    <div class="dose-schedule">
+      <div class="dose-row"><div class="dose-time">8 AM</div><div class="dose-pill oxy">OXY</div><div class="dose-detail">2 oxycodone with breakfast</div></div>
+      <div class="dose-row"><div class="dose-time">11 AM</div><div class="dose-pill tyl">TYL</div><div class="dose-detail">2 Tylenol with a snack</div></div>
+      <div class="dose-row"><div class="dose-time">2 PM</div><div class="dose-pill oxy">OXY</div><div class="dose-detail">2 oxycodone with lunch</div></div>
+      <div class="dose-row"><div class="dose-time">5 PM</div><div class="dose-pill tyl">TYL</div><div class="dose-detail">2 Tylenol with a snack</div></div>
+      <div class="dose-row"><div class="dose-time">8 PM</div><div class="dose-pill oxy">OXY</div><div class="dose-detail">2 oxycodone with dinner</div></div>
+      <div class="dose-row"><div class="dose-time">11 PM</div><div class="dose-pill tyl">TYL</div><div class="dose-detail">2 Tylenol before bed</div></div>
+    </div>
+    <p style="margin-top:14px; margin-bottom:0; font-size:14px; opacity:0.85;">Skip a dose if he doesn't need it. As pain gets better, drop the oxycodone first. Keep Tylenol if he still needs it.</p>
   </div>
 
   <div class="card alarm">
